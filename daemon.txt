@@ -1,0 +1,17 @@
+/etc/systemd/system/doctorbot.service
+
+[Unit]
+Description=Doctor Discord Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/doctor.bot
+Environment="PATH=/root/doctor.bot/venv/bin"
+ExecStart=/root/doctor.bot/venv/bin/python /root/doctor.bot/bot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
